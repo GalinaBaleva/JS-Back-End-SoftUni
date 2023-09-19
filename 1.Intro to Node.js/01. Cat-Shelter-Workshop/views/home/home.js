@@ -40,15 +40,7 @@ return `
 </body>
 
 </html>
-`
-}
-;
-const homePage = {
-    home
-}
-module.exports = homePage;
-
-
+`};
 
 function catTemplate(cat) {
     return `
@@ -65,6 +57,15 @@ function catTemplate(cat) {
 </li>
  `
 }
+
+const homePage = {
+    home
+}
+module.exports = homePage;
+
+
+
+
 
 
 

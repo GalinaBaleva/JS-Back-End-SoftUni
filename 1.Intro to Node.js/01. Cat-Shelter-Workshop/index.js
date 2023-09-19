@@ -2,6 +2,8 @@ const http = require('http');
 
 const { siteStyles } = require('./content/styles/site');
 const homePage = require('./views/home/home');
+const { addBread } = require('./views/addBreed');
+const { addCat } = require('./views/addCat');
 
 
 const cats = [
@@ -61,6 +63,12 @@ const server = http.createServer((req, res) => {
             'Content-Type': 'text/css'
         });
         res.write(siteStyles);
+    } else if(req.url === '/cats/add-breed'){
+        res.writeHead(200, {'Context-Type': 'text/html'});
+        res.write(addBread);
+    } else if(req.url === '/cats/add-cat'){
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.write(addCat);
     }
 
     res.end();
