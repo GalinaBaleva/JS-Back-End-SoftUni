@@ -3,7 +3,7 @@ const http = require('http');
 const { siteStyles } = require('./content/styles/site');
 const homePage = require('./views/home/home');
 const { addBread } = require('./views/addBreed');
-const { addCat } = require('./views/addCat');
+const addNewCat = require('./views/addCat');
 
 
 const cats = [
@@ -52,7 +52,9 @@ const cats = [
         breed: 'Persian',
         description: 'Fat cat',
     },
-]
+];
+
+const catsBreed = ['Persian','Angora', 'British Shorthair Cat', 'Unknown'];
 
 const server = http.createServer((req, res) => {
     if (req.url === '/') {
@@ -68,7 +70,7 @@ const server = http.createServer((req, res) => {
         res.write(addBread);
     } else if(req.url === '/cats/add-cat'){
         res.writeHead(200, {'Content-Type': 'text/html'});
-        res.write(addCat);
+        res.write(addNewCat.addCat(catsBreed));
     }
 
     res.end();
