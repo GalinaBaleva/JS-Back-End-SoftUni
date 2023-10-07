@@ -1,15 +1,20 @@
 const listeners = {};
 
-const publish = (eventName) => {
-    listeners[eventName]?.forEach(x => x());  //Optional chan
+const publish = (eventName, ...eventData) => {
+    listeners[eventName]?.forEach(listener => listener(...eventData));  //Optional chan
 };
 
-const subscribe = (eventName, eventLIstener) => {
-    if(!listeners[eventName]){
+const subscribe = (eventName, eventListener) => {
+    if (!listeners[eventName]) {
         listeners[eventName] = [];
     }
 
-    listeners[eventName].push(eventLIstener);
+    listeners[eventName].push(eventListener);
+
+    return () => {
+        console.log('Unsubscribed');
+        listeners[eventName] = listeners[eventName].filter(x => x != eventListener);
+    }
 };
 
 const eventBus = {
