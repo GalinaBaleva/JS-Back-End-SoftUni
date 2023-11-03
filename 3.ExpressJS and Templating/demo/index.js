@@ -3,6 +3,29 @@ const path = require('path');
 
 const app = express();
 
+
+//Add middleweres
+app.use((req, res, next) => {
+    console.log(`Middlewere 1`);
+    next();
+});
+
+app.use((req, res, next) => {
+    console.log(`HTTP Request ${req.method}: ${req.path}`);
+    next();
+} )
+
+//Route specific middlewere
+const specificMiddlewere = (req, res, next) => {
+    res.send('Some specific route with middlewere');
+};
+
+app.get('/specific', specificMiddlewere, (req, res) => {
+    res.send('Some specific route with middlewere');
+});
+
+
+//Express router / Actions
 app.get('/', (req, res) => {
     res.send('Hello from express!');
     //res.status(200).send('Hello from express!'); можеш да сетнеш статус
@@ -30,6 +53,7 @@ app.get('/download', (req, res) => {
     res.sendFile(path.resolve(__dirname, '/Menschen B1.1 Test 1.pdf')); // този начин е по-капризет от към пътя, необходима е path библиотека
 
 })
+
 
 app.get('*', (req,res) => {
     res.status(404).send('Not Found!'); 
