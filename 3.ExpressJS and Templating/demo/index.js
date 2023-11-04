@@ -1,8 +1,18 @@
 const express = require('express');
+const handlebars = require('express-handlebars');
 const path = require('path');
 
 const app = express();
 
+//Add handlebars to express
+
+
+//Add third party middlewere
+
+const bodyParser = express.urlencoded({extended: false});
+app.use(bodyParser);
+
+app.use(express.static('public'));
 
 //Add middleweres
 app.use((req, res, next) => {
