@@ -3,6 +3,8 @@ const handlebars = require('express-handlebars');
 const path = require('path');
 const app = express();
 
+const { addCat, getCats } = require('./cats');
+
 //Add handlebars to express
 // app.engine('handlebars', handlebars.engine());
 // app.set('view engine', 'handlebars');
@@ -56,10 +58,17 @@ app.get('/about', (req, res) => {
 
 app.get('/cats', (req, res) => {
     // res.send('This page contains cats :')
-    res.render('cats');
+    // res.render('cats', { name: 'Pesho', age: 20 });
+
+    const cats = getCats();
+    console.log(cats)
+    const firstCat = cats[0];
+    res.render('cats', firstCat);
 });
 
 app.post('/cats', (req, res) => {
+    addCat(req.body.name, Number(req.body.age));
+    
     res.status(201).send('Cat has been created!')
 })
 
