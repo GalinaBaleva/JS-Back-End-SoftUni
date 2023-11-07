@@ -1,8 +1,15 @@
-<article>
-    <h2>{{name}}</h2>
+{{#if cats}}
+    {{#each cats}}
+        <article>
+            <h2>{{name}}</h2>
 
-    <p>Cat {{name}} is {{age}} years old</p>
-</article>
+            <p>Cat {{name}} is {{age}} years old</p>
+        </article>
+{{/each}}
+
+{{else}}
+    <strong>There are no cats!</strong>
+{{/if}}
 
 
 <form method="post">

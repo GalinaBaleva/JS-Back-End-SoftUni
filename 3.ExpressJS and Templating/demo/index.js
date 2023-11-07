@@ -61,15 +61,16 @@ app.get('/cats', (req, res) => {
     // res.render('cats', { name: 'Pesho', age: 20 });
 
     const cats = getCats();
-    console.log(cats)
-    const firstCat = cats[0];
-    res.render('cats', firstCat);
+    // console.log(cats)
+    // const firstCat = cats[0];
+    res.render('cats', {cats});
 });
 
 app.post('/cats', (req, res) => {
     addCat(req.body.name, Number(req.body.age));
     
-    res.status(201).send('Cat has been created!')
+    // res.status(201).send('Cat has been created!')
+    res.redirect('/cats');
 })
 
 app.get('/cats/:catId', (req, res) => {
