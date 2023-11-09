@@ -16,6 +16,7 @@ app.get('/', (req, res) => {
 const bodyParser = express.urlencoded({ extended: false });
 app.use(bodyParser);
 
+app.use(express.static('public'));
 
 
 app.listen(5000, () => console.log('Server is listening on port 5000...'));
