@@ -24,6 +24,14 @@ app.get('/add-cat', (req, res) => {
     res.render('addCat');
 });
 
+app.get('/cat-shelter', (req, res) => {
+    res.render('catShelter');
+});
+
+app.get('/edit-cat', (req, res) => {
+    res.render('editCat');
+});
+
 
 //linking publib 
 app.use(express.static('public'));
