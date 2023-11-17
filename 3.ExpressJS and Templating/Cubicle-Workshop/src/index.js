@@ -1,18 +1,13 @@
 const express = require('express');
-const handlebars = require('express-handlebars');
-const path = require('path');
 const expressConfig = require('./config/expressConfig');
 const homeController = require('./controllers/homeController');
+const handlebarsConfig = require('./config/handlebarsConfig');
 
 const app = express();
 const port = 5000;
 
 //Handlebars engine middlewere
-app.engine('hbs', handlebars.engine({
-    extname: 'hbs',
-}));
-app.set('view engine', 'hbs');
-app.set('views', 'src/views')
+handlebarsConfig(app);
 
 expressConfig(app);
 // require.apply('./config/expressConfig')(app); //It is possible to inport configs like this to.
