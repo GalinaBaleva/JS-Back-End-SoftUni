@@ -1,8 +1,6 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
-const expressConfig = require('./config/expressConfig');
-
-
+const homeController = require('./controllers/homeController');
 
 const app = express();
 const port = 5000;
@@ -13,14 +11,13 @@ app.engine('hbs', handlebars.engine({
 }));
 app.set('view engine', 'hbs');
 
-app.use(expressConfig);
-// require.apply('./config/expressConfig')(app); It is possible to inport configs like this to.
 
 //Bodyparser middlewere
 const bodyParser = express.urlencoded({ extended: false });
 app.use(bodyParser);
 
 //Routers
+app.use(homeController);
 
 
 
