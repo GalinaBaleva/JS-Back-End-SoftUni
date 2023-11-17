@@ -1,7 +1,9 @@
 const express = require('express');
 const expressConfig = require('./config/expressConfig');
-const homeController = require('./controllers/homeController');
 const handlebarsConfig = require('./config/handlebarsConfig');
+
+const homeController = require('./controllers/homeController');
+const cubesController = require('./controllers/cubesController');
 
 const app = express();
 const port = 5000;
@@ -15,6 +17,7 @@ expressConfig(app);
 
 //Routers
 app.use(homeController);
+app.use('/cube/', cubesController);
 
 
 
