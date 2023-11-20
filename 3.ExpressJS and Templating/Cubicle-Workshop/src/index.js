@@ -17,7 +17,7 @@ expressConfig(app);
 
 //Routers
 app.use(homeController);
-app.use('/cube/', cubesController);
+app.use('/cube/', cubesController); 
 
 
 

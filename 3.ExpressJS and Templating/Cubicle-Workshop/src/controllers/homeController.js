@@ -1,7 +1,10 @@
 const router = require('express').Router();
+const cumesManager = require('../managers/cubesManager');
 
 router.get('/', (req, res) => {
-    res.render('index');
+    const cubes = cumesManager.getAll();
+
+    res.render('index', { cubes });
 });
 
 router.get('/about', (req, res) => {
