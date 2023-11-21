@@ -18,6 +18,9 @@ expressConfig(app);
 //Routers
 app.use(homeController);
 app.use('/cube/', cubesController); 
+app.use('*', (req, res) =>{
+    res.redirect('/404');
+});
 
 
 

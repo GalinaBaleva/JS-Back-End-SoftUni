@@ -28,6 +28,10 @@ router.post('/create', (req, res) => {
 router.get('/details/:cubeId', (req, res) => {
     const cube = cubesMatager.getOne(req.params.cubeId);
 
+    if(!cube){
+        res.redirect('/404');
+    };
+
     res.render('details', { cube });
 });
 
