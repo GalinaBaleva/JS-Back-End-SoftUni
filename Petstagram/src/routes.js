@@ -1,11 +1,9 @@
 import express from 'express'
-const routes = express.Router()
+const router = express.Router()
+
+import { homeController } from './controllers/homeController.js'
+
+router.use(homeController)
 
 
-//TODO: add controller routes
-
-routes.get('/', (req, res) => {
-    res.send('First action')
-})
-
-export { routes }
+export { router as routes }

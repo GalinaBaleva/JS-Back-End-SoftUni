@@ -4,6 +4,8 @@ import { routes } from './routes.js'
 const PORT = 5000
 const app = express()
 
+app.set('view engine', 'ejs')
+
 app.use(
     express.static('public'),
     express.urlencoded({ extended: false }),
